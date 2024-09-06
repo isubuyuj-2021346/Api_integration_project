@@ -39,7 +39,7 @@ async function countHighEarningEmployees() {
     return highEarners.length;
 }
 
-// Exportar las funciones si las necesitas en otros archivos
+// Exportar las funciones si se necesita en otros archivos
 module.exports = { getAllEmployees, countHighEarningEmployees };
 
 // Llamada para contar empleados con salario mayor a $300,000
@@ -84,3 +84,38 @@ module.exports = { createEmployee };
 
 // Llamada para crear un nuevo empleado
 createEmployee();
+
+
+// What’s your user id?
+const API_URL3 = 'http://dummy.restapiexample.com/api/v1';
+
+// Función para obtener el ID del usuario
+async function getUserId() {
+    try {
+        const response = await fetch(`${API_URL3}/employees`, {
+            method: 'GET',
+        });
+
+        const textResponse = await response.text(); // Obtén la respuesta en formato texto para ver qué está devolviendo el servidor
+        console.log('Raw Response:', textResponse); // Imprime la respuesta en bruto
+
+        const data = JSON.parse(textResponse); // Intenta convertir el texto en JSON
+
+        if (data.status === 'success') {
+            const employee = data.data.find(emp => emp.employee_name === 'Isai Alejandro Subuyuj García');
+            if (employee) {
+                console.log('Tu ID de usuario es:', employee.id);
+            } else {
+                console.log('No employees found.');
+            }
+        } else {
+            console.log('Error fetching employees:', data.message);
+        }
+    } catch (error) {
+        console.error('Error fetching employees:', error);
+    }
+}
+// Llamar a la función para obtener el ID del usuario
+getUserId();
+
+// Error 429 Too Many Requests: limite de solicitudes API alcanzado.
