@@ -1,0 +1,19 @@
+{
+  "name": "isai-alejandro-subuyuj-garcia",
+  "version": "1.0.0",
+  "description": "Test",
+  "main": "entry point: api_integration.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/isubuyuj-2021346/Api_integration_project.git"
+  },
+  "author": "Isai Subuyuj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/isubuyuj-2021346/Api_integration_project/issues"
+  },
+  "homepage": "https://github.com/isubuyuj-2021346/Api_integration_project#readme"
+}

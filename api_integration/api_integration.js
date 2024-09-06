@@ -44,3 +44,43 @@ module.exports = { getAllEmployees, countHighEarningEmployees };
 
 // Llamada para contar empleados con salario mayor a $300,000
 countHighEarningEmployees();
+
+// Create a record with your name. You can use fake data for the other attributes.
+
+// API URL base
+const API_URL2 = 'http://dummy.restapiexample.com/api/v1';
+
+// Función para crear un nuevo empleado
+async function createEmployee() {
+    const employeeData = {
+        name: 'Isai Alejandro Subuyuj García', // Tu nombre
+        salary: '50000', // Datos ficticios
+        age: '19', // Edad ficticia
+    };
+
+    try {
+        const response = await fetch(`${API_URL2}/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(employeeData),
+        });
+
+        const data = await response.json();
+
+        if (data.status === 'success') {
+            console.log('Empleado creado con éxito:', data.data);
+        } else {
+            console.log('Error al crear empleado:', data.message);
+        }
+    } catch (error) {
+        console.error('Error en la solicitud:', error);
+    }
+}
+
+// Exportar la función si la necesitas en otros archivos
+module.exports = { createEmployee };
+
+// Llamada para crear un nuevo empleado
+createEmployee();
